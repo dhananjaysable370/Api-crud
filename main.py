@@ -1,6 +1,5 @@
 import random
 
-
 def guessGame():
     ai = random.randint(1, 100)
     user = -1

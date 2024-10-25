@@ -51,4 +51,15 @@ export const deleteUser = async (req, res) => {
     }
 }
 
-e
+export const getOne = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id);
+        if (!user) {
+            res.status(404).json({ success: false, message: "User not found!" })
+        }
+        res.status(200).json({ success: true, message: "User fetched successfully...", user });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Internal server error!" });
+    }
+}
